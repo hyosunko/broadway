@@ -1,5 +1,8 @@
 <h2><%= @play.title %></h2>
 <h3><%= @play.director %></h3>
+<% if @play.category.present? %>
+  <h4><%= @play.category.name %></h4>
+<% end %>
 <p><%= @play.description %><p>
 
 <div class="links btn-group">
