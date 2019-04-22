@@ -7,7 +7,7 @@
         <% if play.play_img.attached? %>
           <%= image_tag play.play_img.variant(resize: "250x350"), class: "play" %>
         <% else %>
-          <h2><%= link_to play.title, play_path(play), class: "play" %></h2>
+          <%= image_tag "broadway.jpg", class: "play" %>
         <% end %>
       </a>
     </div>
