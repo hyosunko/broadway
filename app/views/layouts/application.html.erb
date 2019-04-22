@@ -30,7 +30,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton", role="menu">
               <% Category.all.each do |category| %>
-                <li class="<%= 'active' if params[:category] == category.name %>"><%= link_to category.name, plays_path(category.name), class: "link" %></li>
+                <li class="<%= 'active' if params[:format] == category.name %>"><%= link_to category.name, plays_path(category.name), class: "link" %></li>
               <% end %>
             </ul>
           </li>
