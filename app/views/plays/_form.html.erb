@@ -1,4 +1,5 @@
 <%= simple_form_for @play, html: {multipart: true} do |f| %>
+  <%= f.file_field :play_img %>
   <% if controller.action_name =="new" %>
     <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category") %>
   <% else %>
