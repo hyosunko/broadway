@@ -3,13 +3,11 @@
 <% if @plays.present? %>
   <% @plays.each do |play| %>
     <div class="col-md-3">
-      <a href="/plays/ <%= play.id %>">
-        <% if play.play_img.attached? %>
-          <%= image_tag play.play_img.variant(resize: "250x350"), class: "play" %>
-        <% else %>
-          <%= image_tag "broadway.jpg", class: "play" %>
-        <% end %>
-      </a>
+      <% if play.play_img.attached? %>
+        <%= link_to image_tag(play.play_img.variant(resize: "250x350")), play_path(play), class: "play" %>
+      <% else %>
+        <%= link_to image_tag("broadway.jpg", size: "250x350"), play_path(play), class: "play" %>
+      <% end %>
     </div>
   <% end %>
 <% else %>

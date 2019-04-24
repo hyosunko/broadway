@@ -1,15 +1,27 @@
-<h2><%= @play.title %></h2>
-<h3><%= @play.director %></h3>
-<% if @play.category.present? %>
-  <h4><%= @play.category.name %></h4>
-<% end %>
-<p><%= @play.description %><p>
-
+<div class="row">
+  <div class="col-md-4">
+    <% if @play.play_img.attached? %>
+        <%= image_tag @play.play_img.variant(resize: "325x475"), class: "play-show" %>
+      <% else %>
+        <%= image_tag "broadway.jpg", size: "325x475" , class: "play-show" %>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <div class="play-info">
+      <h2 class="play-title"><%= @play.title %></h2>
+      <h3 class="play-director"><span>From </span><%= @play.director %></h3>
+      <% if @play.category.present? %>
+        <h4 class="play-director"><%= @play.category.name %></h4>
+      <% end %>
+      <p clss="play-desc"><%= @play.description %><p>
+    </div>
+  </div>
+</div>
 <div class="links btn-group">
   <% if user_signed_in? %>
     <% if @play.user_id == current_user.id %>
-      <%= link_to "Edit", edit_play_path(@play) %>
-      <%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "Edit", edit_play_path(@play), class: "btn btn-custom" %>
+      <%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom" %>
     <% end %>
   <% end %>
 </div>
