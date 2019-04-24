@@ -1,5 +1,6 @@
 class PlaysController < ApplicationController
   before_action :find_play, only: [:show, :edit, :update, :destroy]
+  before_action :find_categories, only: [:new, :create, :edit, :update]
 
   def index
     if params[:format].blank?
@@ -15,7 +16,6 @@ class PlaysController < ApplicationController
 
   def new
     @play = current_user.plays.build
-    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
 
   def create
@@ -58,6 +58,10 @@ class PlaysController < ApplicationController
 
   def find_play
     @play = Play.find(params[:id])
+  end
+
+  def find_categories
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
 
 end
